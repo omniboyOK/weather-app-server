@@ -10,7 +10,7 @@ app.get("/", function (req, res, next) {
   return res.json({ message: "Welcome"});
 });
 
-app.use(WeatherRouter);
+app.use("/v1", WeatherRouter);
 
 app.listen(port, function () {
   console.log("Server running on port", port);

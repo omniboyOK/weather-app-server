@@ -4,7 +4,7 @@ const request = require("supertest");
 describe("Weather Router", function () {
   it("GET /location", function (done) {
     request("http://localhost:3001")
-      .get("/location")
+      .get("/v1/location")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -20,7 +20,7 @@ describe("Weather Router", function () {
 
   it("GET /current/:city? - La Plata", function (done) {
     request("http://localhost:3001")
-      .get("/current/LaPlata")
+      .get("/v1/current/LaPlata")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -36,7 +36,7 @@ describe("Weather Router", function () {
 
   it("GET /forecast/:city? - La Plata", function (done) {
     request("http://localhost:3001")
-      .get("/forecast/LaPlata")
+      .get("/v1/forecast/LaPlata")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -52,7 +52,7 @@ describe("Weather Router", function () {
 
   it("GET /current/:city? - Null", function (done) {
     request("http://localhost:3001")
-      .get("/current/")
+      .get("/v1/current/")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -68,7 +68,7 @@ describe("Weather Router", function () {
 
   it("GET /forecast/:city? - Null", function (done) {
     request("http://localhost:3001")
-      .get("/forecast/")
+      .get("/v1/forecast/")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)

@@ -5,9 +5,10 @@ var WeatherRouter = require("./src/router/WeatherRouter");
 
 app.use(express.json());
 app.use(express.urlencoded());
+app.enable('trust proxy')
 
 app.get("/", function (req, res, next) {
-  return res.json({ message: "Welcome"});
+  return res.json({ message: "Welcome" });
 });
 
 app.use("/v1", WeatherRouter);

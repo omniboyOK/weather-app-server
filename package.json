@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "should": "^13.2.3",
+    "supertest": "^6.1.3"
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Weather server",
+  "main": "server.js",
+  "repository": "https://github.com/omniboyOK/weather-app-server.git",
+  "author": "omniboyok <barrea.pablo@gmail.com>",
+  "license": "MIT"
+}

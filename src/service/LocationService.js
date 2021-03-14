@@ -12,7 +12,8 @@ const Service = {
     if (ip) {
       ipapi.location(function (result) {
         if (result.error) {
-          return res.status(400).json({ error: "couldn't get location by ip" });
+          res.locals.location = "Buenos Aires";
+          return next();
         } else {
           res.locals.location = result;
           return next();

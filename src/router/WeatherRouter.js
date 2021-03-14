@@ -9,9 +9,6 @@ router.get("/location", LocationService.getLocation, function (req, res) {
 
 router.get("/current/:city?", LocationService.getLocation, WeatherController.getCityWeather);
 
-router.get("/forecast/:city?", LocationService.getLocation, function (req, res) {
-  const { city } = req.params;
-  res.status(200).json({});
-});
+router.get("/forecast/:city?", LocationService.getLocation, WeatherController.getCityForecast);
 
 module.exports = router;

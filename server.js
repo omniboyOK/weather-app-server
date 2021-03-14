@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var port = process.env.PORT;
+var port = process.env.PORT || 3000;
 var WeatherRouter = require("./src/router/WeatherRouter");
 
 app.use(express.json());

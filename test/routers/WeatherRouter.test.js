@@ -17,7 +17,7 @@ describe("Weather Router", function () {
         done();
       });
   });
-  it("GET /location", function (done) {
+  it("GET /location - 200", function (done) {
     request("http://localhost:3001")
       .get("/v1/location")
       .set("X-Forwarded-For", "181.231.41.170")
@@ -34,7 +34,7 @@ describe("Weather Router", function () {
       });
   });
 
-  it("GET /location - Null", function (done) {
+  it("GET /location - 404", function (done) {
     request("http://localhost:3001")
       .get("/v1/location")
       .set("Accept", "application/json")

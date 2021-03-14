@@ -34,18 +34,18 @@ describe("Weather Router", function () {
       });
   });
 
-  it("GET /location - 404", function (done) {
+  it("GET /location - Null", function (done) {
     request("http://localhost:3001")
       .get("/v1/location")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
-      .expect(404)
+      .expect(200)
       .end(function (err, res) {
         if (err) {
           throw err;
         }
-        res.body.should.have.property("error");
-        res.body.error.should.equal("could not get location");
+        res.body.should.be.String();
+        res.body.should.equal("Buenos Aires");
         done();
       });
   });
@@ -88,7 +88,7 @@ describe("Weather Router", function () {
 
   it("GET /forecast/:city? - La Plata", function (done) {
     request("http://localhost:3001")
-      .get("/v1/forecast/LaPlata")
+      .get("/v1/forecast/La Plata")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -97,7 +97,8 @@ describe("Weather Router", function () {
           throw err;
         }
         res.body.should.have.property("city");
-        res.body.city.should.not.equal(null);
+        res.body.should.have.property("list");
+        res.body.city.name.should.equal("La Plata");
         done();
       });
   });
@@ -112,8 +113,9 @@ describe("Weather Router", function () {
         if (err) {
           throw err;
         }
-        res.body.should.have.property("days");
-        res.body.days.should.not.equal(null);
+        res.body.should.have.property("city");
+        res.body.should.have.property("list");
+        res.body.city.name.should.equal("Buenos Aires");
         done();
       });
   });

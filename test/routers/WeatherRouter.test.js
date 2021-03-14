@@ -68,18 +68,20 @@ describe("Weather Router", function () {
       });
   });
 
-  it("GET /current/:city? - Empty String", function (done) {
+  it("GET /current/:city? - No city or Ip", function (done) {
     request("http://localhost:3001")
-      .get("/v1/current/ ")
+      .get("/v1/current/")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
-      .expect(400)
+      .expect(200)
       .end(function (err, res) {
         if (err) {
           throw err;
         }
-        res.body.should.have.property("error");
-        res.body.error.should.equal("couldn't get location by ip");
+        res.body.should.have.property("weather");
+        res.body.weather.should.not.equal(null);
+        res.body.should.have.property("name");
+        res.body.name.should.equal("Buenos Aires");
         done();
       });
   });
@@ -96,22 +98,6 @@ describe("Weather Router", function () {
         }
         res.body.should.have.property("city");
         res.body.city.should.not.equal(null);
-        done();
-      });
-  });
-
-  it("GET /current/:city? - No city or Ip", function (done) {
-    request("http://localhost:3001")
-      .get("/v1/current/")
-      .set("Accept", "application/json")
-      .expect("Content-Type", /json/)
-      .expect(404)
-      .end(function (err, res) {
-        if (err) {
-          throw err;
-        }
-        res.body.should.have.property("error");
-        res.body.error.should.equal("Could not get location");
         done();
       });
   });

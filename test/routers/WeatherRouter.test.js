@@ -44,15 +44,15 @@ describe("Weather Router", function () {
         if (err) {
           throw err;
         }
-        res.body.should.have.property("city");
-        res.body.city.should.not.equal(null);
+        res.body.should.have.property("error");
+        res.body.error.should.equal("could not get location");
         done();
       });
   });
 
   it("GET /current/:city? - La Plata", function (done) {
     request("http://localhost:3001")
-      .get("/v1/current/LaPlata")
+      .get("/v1/current/La Plata")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200)
@@ -60,8 +60,26 @@ describe("Weather Router", function () {
         if (err) {
           throw err;
         }
-        res.body.should.have.property("city");
-        res.body.city.should.not.equal(null);
+        res.body.should.have.property("weather");
+        res.body.weather.should.not.equal(null);
+        res.body.should.have.property("name");
+        res.body.name.should.equal("La Plata");
+        done();
+      });
+  });
+
+  it("GET /current/:city? - Empty String", function (done) {
+    request("http://localhost:3001")
+      .get("/v1/current/ ")
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(400)
+      .end(function (err, res) {
+        if (err) {
+          throw err;
+        }
+        res.body.should.have.property("error");
+        res.body.error.should.equal("couldn't get location by ip");
         done();
       });
   });
@@ -82,18 +100,18 @@ describe("Weather Router", function () {
       });
   });
 
-  it("GET /current/:city? - Null", function (done) {
+  it("GET /current/:city? - No city or Ip", function (done) {
     request("http://localhost:3001")
       .get("/v1/current/")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
-      .expect(200)
+      .expect(404)
       .end(function (err, res) {
         if (err) {
           throw err;
         }
-        res.body.should.have.property("weather");
-        res.body.weather.should.not.equal(null);
+        res.body.should.have.property("error");
+        res.body.error.should.equal("Could not get location");
         done();
       });
   });

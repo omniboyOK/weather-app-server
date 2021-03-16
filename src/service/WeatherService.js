@@ -11,7 +11,6 @@ const Service = {
         return response.data;
       })
       .catch((error) => {
-        console.log(error);
         return Promise.reject();
       });
   },
@@ -22,7 +21,6 @@ const Service = {
         return response.data;
       })
       .catch((error) => {
-        console.log(error);
         return Promise.reject();
       });
   },

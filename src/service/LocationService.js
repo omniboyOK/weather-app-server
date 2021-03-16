@@ -6,6 +6,7 @@ const Service = {
 
     if (city) {
       res.locals.location = req.params.city;
+      console.log(req.params.city)
       return next();
     }
 

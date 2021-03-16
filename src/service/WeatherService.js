@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const URL = "https://api.openweathermap.org/data/2.5/";
+const URL = "http://api.openweathermap.org/data/2.5/";
 const KEY = process.env.WEATHER_KEY;
 
 const Service = {

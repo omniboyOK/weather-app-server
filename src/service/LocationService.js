@@ -6,7 +6,6 @@ const Service = {
 
     if (city) {
       res.locals.location = req.params.city;
-      console.log(req.params.city)
       return next();
     }
 
@@ -16,7 +15,7 @@ const Service = {
           res.locals.location = "Buenos Aires";
           return next();
         } else {
-          res.locals.location = result;
+          res.locals.location = result.city;
           return next();
         }
       }, ip);

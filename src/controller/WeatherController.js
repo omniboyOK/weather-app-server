@@ -13,10 +13,13 @@ const Controller = {
       .then((result) => {
         result.weather = result.weather[0];
         let timezoneInMinutes = result.timezone / 60;
-        result.date = moment().utcOffset(timezoneInMinutes).format("HH:mm DD/MM")
+        result.date = moment()
+          .utcOffset(timezoneInMinutes)
+          .format("HH:mm DD/MM");
         return res.status(200).json(result);
       })
       .catch((error) => {
+        console.log(error);
         return res.status(404).json({ message: "city not found" });
       });
   },
@@ -33,7 +36,9 @@ const Controller = {
 
         list.forEach((item) => {
           let timezoneInMinutes = city.timezone / 60;
-          item.date = moment(item.dt_txt).utcOffset(timezoneInMinutes).format("HH:mm DD/MM")
+          item.date = moment(item.dt_txt)
+            .utcOffset(timezoneInMinutes)
+            .format("HH:mm DD/MM");
           item.weather = item.weather[0];
         });
 

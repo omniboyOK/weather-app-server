@@ -11,7 +11,8 @@ const Service = {
         return response.data;
       })
       .catch((error) => {
-        return Promise.reject()
+        console.log(error);
+        return Promise.reject();
       });
   },
   getForecastByCity: function (city) {
@@ -21,10 +22,10 @@ const Service = {
         return response.data;
       })
       .catch((error) => {
-        return Promise.reject()
+        console.log(error);
+        return Promise.reject();
       });
   },
 };
 
 module.exports = Service;
-

@@ -6,7 +6,7 @@ const KEY = process.env.WEATHER_KEY;
 const Service = {
   getWeatherByCity: function (city) {
     return axios
-      .get(`${URL}weather?q=${city}&appid=${KEY}&units=metric`)
+      .get(`${URL}weather?q=${city}&appid=${KEY}&units=metric&lang=es`)
       .then((response) => {
         return response.data;
       })
@@ -16,7 +16,7 @@ const Service = {
   },
   getForecastByCity: function (city) {
     return axios
-      .get(`${URL}forecast?q=${city}&appid=${KEY}&units=metric`)
+      .get(`${URL}forecast?q=${city}&appid=${KEY}&units=metric&lang=es`)
       .then((response) => {
         return response.data;
       })

@@ -9,6 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.enable("trust proxy");
 
+app.use(express.static('public'));
+
 app.get("/ping", function (req, res) {
   res.status(200).json({ message: "pong" });
 });

@@ -4,7 +4,6 @@ const WeatherService = require("../service/WeatherService");
 const Controller = {
   getCityWeather: function (req, res) {
     let { location } = res.locals;
-    console.log(location)
     if (!location) {
       return res.status(400).json({ message: "bad request" });
     }

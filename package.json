@@ -2,7 +2,7 @@
   "dependencies": {
     "axios": "^0.21.2",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "ipapi.co": "^0.3.0",
     "mocha": "^8.3.2",
     "moment": "^2.29.1",
